@@ -23,6 +23,6 @@ stdenv.mkDerivation {
   buildInputs = [ godot-dep ];
   platforms = [ "x86_64-linux" "x86_64-darwin" ];
   shellHook = ''
-    godot
+    godot game/project.godot
   '';
 }
