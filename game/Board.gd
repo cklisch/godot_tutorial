@@ -1,46 +1,34 @@
 extends Node2D
 
-var dot_class = preload("res://Dot.tscn")
-
 #var NrPlayers = 2
 var colors = ["black", "white"]
 var turn = 0
-var dots = []
-var new_dot = true
-var pos = Vector2(0,0)
-var clicked_dot
 
+var circle = preload("res://pics/circle.png")
 
-
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	set_process(false)
-	set_physics_process(false)
+	pass # Replace with function body.
+	
 
+func create_sprite():
+	var tex = Sprite.new()
+	tex.set_texture(circle)
+	tex.set_scale(Vector2(0.2,0.2))
+	return tex
+	
 func add_dot(position):
-	new_dot = false
-	var dot = dot_class.instance()
+	var dot = Node2D.new()
+	dot.set_name(colors[turn])
 	dot.position = position
-	var label = load("res://Info.tscn")
-	var test = label.instance()
-	dot.add_child(test)
-	self.add_child(dot)
-	print ("add dot")
+	var tex = create_sprite()
+	dot.add_child(tex)
+	add_child(dot)
 
 func _input(event):
-	if event is InputEventMouseButton \
-	and event.button_index == BUTTON_LEFT \
-	and event.pressed:
-		new_dot = true
-		pos = event.position
-		set_process(true)
+	if event is InputEventMouseButton && event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			
+			add_dot(event.position)
 
-
-func _process(delta):
-	set_process(false)
-	
-	if new_dot:
-		add_dot(pos)
-	
-	
 		
