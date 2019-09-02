@@ -1,7 +1,8 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://ubuntu-font-family-0.83/Ubuntu-R.ttf"
 
 [resource]
-font_data = SubResource( 2 )
+size = 12
+font_data = SubResource( 1 )
